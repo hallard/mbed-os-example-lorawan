@@ -212,7 +212,23 @@
             "SX126X-lora-driver.device-select":  "ARDUINO_UNO_A2",
             "SX126X-lora-driver.crystal-select": "ARDUINO_UNO_A3",
             "SX126X-lora-driver.ant-switch":     "ARDUINO_UNO_D8"
+        },
+
+        "LORA_E5": {
+            "stm32wl-lora-driver.debug_rx": "LED1",
+            "stm32wl-lora-driver.debug_tx": "LED2",
+            "stm32wl-lora-driver.rf-switch-ctl1": "PA_4",
+            "stm32wl-lora-driver.rf-switch-ctl2": "PA_5",
+            "stm32wl-lora-driver.rf-switch-ctl3": "NC"
+        },
+
+        "RAK3172": {
+            "stm32wl-lora-driver.rf-switch-ctl1": "PB_8",
+            "stm32wl-lora-driver.rf-switch-ctl2": "PC_13",
+            "stm32wl-lora-driver.rf-switch-ctl3": "NC"
         }
+
+
     },
     "macros": ["MBEDTLS_USER_CONFIG_FILE=\"mbedtls_lora_config.h\""]
 }

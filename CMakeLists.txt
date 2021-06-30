@@ -9,6 +9,8 @@ set(APP_TARGET mbed-os-example-lorawan)
 
 include(${MBED_PATH}/tools/cmake/app.cmake)
 
+add_subdirectory(TARGET_RAK3172) 
+add_subdirectory(TARGET_LORA_E5) 
 add_subdirectory(${MBED_PATH})
 
 add_executable(${APP_TARGET})
