@@ -86,6 +86,39 @@ static LoRaWANInterface lorawan(radio);
  * Application specific callbacks
  */
 static lorawan_app_callbacks_t callbacks;
+   
+void set_antenna_switch(RBI_Switch_TypeDef state)
+{
+    // Radio specific controls (TX/RX duplexer switch control)
+    mbed::DigitalOut _rf_switch_ctrl1(MBED_CONF_STM32WL_LORA_DRIVER_RF_SWITCH_CTL1);
+    mbed::DigitalOut _rf_switch_ctrl2(MBED_CONF_STM32WL_LORA_DRIVER_RF_SWITCH_CTL2);
+
+    switch (state) {
+        case RBI_SWITCH_OFF: 
+            // Turn off switch 
+            _rf_switch_ctrl1 = 0;
+            _rf_switch_ctrl2 = 0;
+        break;
+
+        case RBI_SWITCH_RX: 
+            // Turns On in Rx Mode the RF Switch 
+            _rf_switch_ctrl1 = 1;
+            _rf_switch_ctrl2 = 0;
+        break;
+
+        case RBI_SWITCH_RFO_LP: 
+        case RBI_SWITCH_RFO_HP: 
+            // Turns On in Tx Mode the RF Switch 
+            _rf_switch_ctrl1 = 0;
+            _rf_switch_ctrl2 = 1;
+        break;
+        default:
+            //printf("Unknown\r\n");
+        break;
+    }
+}
+
+
 
 /**
  * Entry point for application
